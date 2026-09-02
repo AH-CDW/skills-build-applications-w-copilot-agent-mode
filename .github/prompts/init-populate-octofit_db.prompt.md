@@ -1,6 +1,6 @@
 ---
-mode: 'agent'
-model: GPT-5.5
+agent: agent
+model: GPT-5.4
 description: 'Configure MongoDB and seed octofit_db for the Octofit multi-tier application'
 ---
 
