@@ -66,6 +66,10 @@ body {
   box-sizing: border-box;
 }
 
+:root { font-family: 'Trebuchet MS', sans-serif; color: #243b53; background: #f0f4f8; letter-spacing: 0; color-scheme: light; }
+body { min-width: 320px; background: #f0f4f8; }
+#root { width: 100%; max-width: none; margin: 0; text-align: initial; border: 0; display: block; }
+
 h1,
 h2 {
   font-family: var(--heading);

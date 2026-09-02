@@ -1,10 +1,17 @@
 import { useState } from 'react'
+import { NavLink, Navigate, Route, Routes } from 'react-router-dom'
 import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
+import logoUrl from '../../../docs/octofitapp-small.png'
+import Activities from './components/Activities.jsx'
+import Leaderboard from './components/Leaderboard.jsx'
+import Teams from './components/Teams.jsx'
+import Users from './components/Users.jsx'
+import Workouts from './components/Workouts.jsx'
 import './App.css'
 
-function App() {
+export function LegacyStarter() {
   const [count, setCount] = useState(0)
 
   return (
@@ -116,6 +123,31 @@ function App() {
       <div className="ticks"></div>
       <section id="spacer"></section>
     </>
+  )
+}
+
+const navigation = [['users', 'Athletes'], ['teams', 'Teams'], ['activities', 'Activities'], ['leaderboard', 'Leaderboard'], ['workouts', 'Workouts']]
+
+function App() {
+  return (
+    <div className="app-shell">
+      <header className="topbar">
+        <NavLink className="brand" to="/users"><img src={logoUrl} alt="OctoFit" /><span>OctoFit <strong>Tracker</strong></span></NavLink>
+        <nav className="main-nav" aria-label="Primary navigation">
+          {navigation.map(([path, label]) => <NavLink key={path} to={`/${path}`}>{label}</NavLink>)}
+        </nav>
+      </header>
+      <main className="content-area">
+        <Routes>
+          <Route path="/users" element={<Users />} />
+          <Route path="/teams" element={<Teams />} />
+          <Route path="/activities" element={<Activities />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/workouts" element={<Workouts />} />
+          <Route path="*" element={<Navigate to="/users" replace />} />
+        </Routes>
+      </main>
+    </div>
   )
 }
 
